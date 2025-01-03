@@ -1,0 +1,87 @@
+# DEPLOY DO APLICATIVO NO EC2:
+
+1. Acesse a instancia da aplicação via SSH:
+
+```bash
+ssh -i "seu-arquivo.pem" ec2-user@<IP-da-instância-aplicação>
+```
+
+2. Já dentro da sua instancia EC2, atualize o Sistema Operacional:
+
+```bash
+sudo yum update -y          # Para Amazon Linux
+sudo apt update && sudo apt upgrade -y  # Para Ubuntu
+```
+
+3. Instale o Node.js e npm:
+
+```bash
+# Para Amazon Linux 2
+curl -sL https://rpm.nodesource.com/setup_18.x | sudo bash -
+sudo yum install -y nodejs
+
+# Para Ubuntu
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+```
+
+4. Instale o git:
+
+```bash
+sudo yum install -y git     # Amazon Linux
+sudo apt install -y git     # Ubuntu
+```
+
+5. Após isso, clone o repositório do app:
+
+```bash
+git clone <URL-do-repositório>
+```
+
+Substitua <URL-do-repositório> pelo link HTTPS ou SSH do repositório.
+
+6. O git irá pedir seu NAME, coloque o nome do seu github.
+7. Ele irá pedir também sua PASSWORD, passe seu **Personal access tokens (classic)**, você o encontra dentro da sua conta github, em Settings, Developer Settings, Personal acess tokens, e por fim Tokens (classic).
+
+8. Navegue até o diretório do app
+
+```bash
+cd nome-do-repositorio
+```
+
+9. Instale as dependências do app
+
+```bash
+npm install
+```
+
+10. Configure as variáveis de ambiente
+
+```bash
+touch .env
+nano .env
+```
+
+Aqui está um exemplo:
+
+```bash
+DB_CONNECTION=postgres
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=senhadopostgres
+
+JWT_SECRET=supersecret
+USER_EMAIL=usuario.teste@example.com
+USER_PASSWORD=Senha123!
+```
+
+Não se esqueça de colocar o IPv4 publico da EC2 que o app está, na variável DB_HOST, e nem de colocar as informações do usuario do banco de dados, nas variáveis DB_USERNAME e DB_PASSWORD.
+
+Salve e feche (Ctrl + O, Enter e Ctrl + X no Nano).
+
+11. Inicie o aplicativo:
+
+```bash
+npm run start:dev
+```
