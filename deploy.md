@@ -1,12 +1,12 @@
 # DEPLOY DO APLICATIVO NO EC2:
 
-1. Acesse a instancia da aplicação via SSH:
+1. Acesse a instância da aplicação via SSH:
 
 ```bash
 ssh -i "seu-arquivo.pem" ec2-user@<IP-da-instância-aplicação>
 ```
 
-2. Já dentro da sua instancia EC2, atualize o Sistema Operacional:
+2. Já dentro da sua instância EC2, atualize o Sistema Operacional:
 
 ```bash
 sudo yum update -y          # Para Amazon Linux
@@ -25,7 +25,7 @@ curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt install -y nodejs
 ```
 
-4. Instale o git:
+4. Instale o Git:
 
 ```bash
 sudo yum install -y git     # Amazon Linux
@@ -40,8 +40,8 @@ git clone <URL-do-repositório>
 
 Substitua <URL-do-repositório> pelo link HTTPS ou SSH do repositório.
 
-6. O git irá pedir seu NAME, coloque o nome do seu github.
-7. Ele irá pedir também sua PASSWORD, passe seu **Personal access tokens (classic)**, você o encontra dentro da sua conta github, em Settings, Developer Settings, Personal acess tokens, e por fim Tokens (classic).
+6. O Git irá pedir seu NAME, coloque o nome do seu GitHub.
+7. Ele irá pedir também sua PASSWORD, passe seu **Personal Access Tokens (classic)**, você o encontra dentro da sua conta GitHub, em Settings, Developer Settings, Personal Access Tokens, e por fim Tokens (classic).
 
 8. Navegue até o diretório do app
 
@@ -76,7 +76,7 @@ USER_EMAIL=usuario.teste@example.com
 USER_PASSWORD=Senha123!
 ```
 
-Não se esqueça de colocar o IPv4 publico da EC2 que o app está, na variável DB_HOST, e nem de colocar as informações do usuario do banco de dados, nas variáveis DB_USERNAME e DB_PASSWORD.
+Não se esqueça de colocar o IPv4 publico da EC2 que o app está rodando, na variável DB_HOST, e nem de colocar as informações do usuário do banco de dados, nas variáveis DB_USERNAME e DB_PASSWORD.
 
 Salve e feche (Ctrl + O, Enter e Ctrl + X no Nano).
 

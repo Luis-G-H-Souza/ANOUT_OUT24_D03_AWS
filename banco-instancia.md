@@ -1,19 +1,19 @@
-# CONFIGURANDO INSTANCIA DO BANCO DE DADOS
+# CONFIGURANDO INSTÂNCIA DO BANCO DE DADOS
 
-1. Acesse a instancia da aplicação via SSH:
+1. Acesse a instância da aplicação via SSH:
 
 ```bash
 ssh -i "seu-arquivo-chave.pem" ec2-user@<IP-público-da-instância-banco>
 ```
 
-2. Já dentro da sua instancia EC2, atualize o Sistema Operacional:
+2. Já dentro da sua instância EC2, atualize o Sistema Operacional:
 
 ```bash
 sudo yum update -y          # Para Amazon Linux
 sudo apt update && sudo apt upgrade -y  # Para Ubuntu
 ```
 
-3. Instale o PostgresSQL:
+3. Instale o PostgreSQL:
 
 ```bash
 # Para Amazon Linux 2
@@ -24,7 +24,7 @@ sudo yum install -y postgresql-server postgresql-contrib
 sudo apt install -y postgresql postgresql-contrib
 ```
 
-4. Inicie e configure o PostgresSQL:
+4. Inicie e configure o PostgreSQL:
 
 ```bash
 # Iniciar o serviço
@@ -58,12 +58,12 @@ CREATE DATABASE "challengeDB";
 CREATE USER meu_usuario WITH PASSWORD 'minha_senha';
 
 -- Dê permissões ao usuário
-GRANT ALL PRIVILEGES ON DATABASE meu_banco TO meu_usuario;
+GRANT ALL PRIVILEGES ON DATABASE challengeDB TO meu_usuario;
 
 \q  -- Saia do terminal PostgreSQL
 ```
 
-7. Agora que você está no shell do sistema operacional, configure o PostgresSQL:
+7. Agora que você está no shell do sistema operacional, configure o PostgreSQL:
 
    7.1. Abra o arquivo de configuração:
 
