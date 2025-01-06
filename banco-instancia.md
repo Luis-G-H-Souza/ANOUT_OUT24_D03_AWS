@@ -55,12 +55,20 @@ postgres=#
 CREATE DATABASE "challengeDB";
 
 -- Crie um usuário e defina uma senha
-CREATE USER meu_usuario WITH PASSWORD 'minha_senha';
+CREATE USER seu_usuario WITH PASSWORD 'minha_senha';
 
 -- Dê permissões ao usuário
-GRANT ALL PRIVILEGES ON DATABASE challengeDB TO meu_usuario;
+GRANT ALL PRIVILEGES ON DATABASE "challengeDB" TO postgres;
 
 \q  -- Saia do terminal PostgreSQL
+
+exit -- Vá para o terminal do Ubuntu
+```
+
+Caso você esteja utilizando o usuario padrão postgres, ao invés de criar um usuario, como descrito na linha 2 acima, utilize esse comando para colocar sua senha do usuario postgres
+
+```sql
+ALTER USER postgres PASSWORD 'nova_senha';
 ```
 
 7. Agora que você está no shell do sistema operacional, configure o PostgreSQL:
@@ -73,21 +81,27 @@ GRANT ALL PRIVILEGES ON DATABASE challengeDB TO meu_usuario;
 
    Substitua <versão> pela versão instalada (por exemplo, 16).
 
+   Em caso de duvida, utilize esse comando para ver a versão instalada do PostgreSQL:
+
+   ```bash
+   psql --version
+   ```
+
    7.2. Localize a linha:
 
    ```plaitext
-   listen_addresses = 'localhost'
+   #listen_addresses = 'localhost'
    ```
 
-   E altere para:
+   Apague o # e altere para:
 
    ```plaitext
    listen_addresses = '*'
    ```
 
-   Ou especifique o IP privado do banco de dados.
+   Ou especifique o IP privado da instancia EC2 que está rodando o app.
 
-   7.3. Salve o arquivo e reinicie o PostgreSQL:
+   7.3. Salve e feche (Ctrl + O, Enter e Ctrl + X no Nano) e reinicie o PostgreSQL:
 
    ```bash
    sudo systemctl restart postgresql
@@ -111,7 +125,7 @@ GRANT ALL PRIVILEGES ON DATABASE challengeDB TO meu_usuario;
 
    Isso permite conexões de qualquer IP na sub-rede privada da VPC.
 
-   8.3. Salve e reinicie o PostgreSQL:
+   8.3. Salve e feche (Ctrl + O, Enter e Ctrl + X no Nano) e reinicie o PostgreSQL:
 
    ```bash
    sudo systemctl restart postgresql

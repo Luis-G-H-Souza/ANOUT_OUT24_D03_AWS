@@ -76,7 +76,7 @@ USER_EMAIL=usuario.teste@example.com
 USER_PASSWORD=Senha123!
 ```
 
-Não se esqueça de colocar o IPv4 publico da EC2 que o app está rodando, na variável DB_HOST, e nem de colocar as informações do usuário do banco de dados, nas variáveis DB_USERNAME e DB_PASSWORD.
+Não se esqueça de colocar o IPv4 publico da EC2 que o Banco de dados está rodando, na variável DB_HOST, e nem de colocar as informações do usuário do banco de dados, nas variáveis DB_USERNAME e DB_PASSWORD.
 
 Salve e feche (Ctrl + O, Enter e Ctrl + X no Nano).
 
